@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file bootstrap_library.install
+ * Installation and update functions for the Bootstrap Library
+ * Module
+ */
+
+/**
+ * Default settings storage.
+ */
+function _bootstrap_library_defaults() {
+  return array(
+    'visibility' => array(
+      'visibility' => 0,
+      'pages' => 'admin/*',
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_install().
+ * This will create our system variable defaults.
+ * The benefit is that we do not need to pass defaults
+ * to variable_get(), which allows centralization of defaults.
+ */
+function bootstrap_library_install() {
+  variable_set('bootstrap_library_settings', _bootstrap_library_defaults());
+}
+
+/**
+ * Implementation of hook_uninstall().
+ * Only clears our variables, so a fresh installation can repopulate them.
+ */
+function bootstrap_library_uninstall() {
+  // Settings.
+  variable_del('bootstrap_library_settings');
+}

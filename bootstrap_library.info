@@ -1,0 +1,6 @@
+name = Bootstrap Library
+description = Register Boostrap as a library by installing files in /sites/all/libraries/bootstrap.
+package = Twitter Bootstrap
+core = 7.x
+
+configure = admin/config/development/bootstrap_library
