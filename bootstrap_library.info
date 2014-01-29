@@ -3,4 +3,6 @@ description = Register Boostrap as a library by installing files in /sites/all/l
 package = Twitter Bootstrap
 core = 7.x
 
+dependencies[] = libraries
+
 configure = admin/config/development/bootstrap_library
