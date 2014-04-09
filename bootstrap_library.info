@@ -6,3 +6,9 @@ core = 7.x
 dependencies[] = libraries
 
 configure = admin/config/development/bootstrap_library
+; Information added by Drupal.org packaging script on 2014-03-05
+version = "7.x-1.0+2-dev"
+core = "7.x"
+project = "bootstrap_library"
+datestamp = "1394044114"
+

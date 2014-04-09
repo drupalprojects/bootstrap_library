@@ -15,6 +15,10 @@ function _bootstrap_library_defaults() {
       'visibility' => 0,
       'pages' => 'admin/*',
     ),
+    'theme' => array(
+      'visibility' => 1,
+      'themes' => '',
+    ),
   );
 }
 
@@ -35,4 +39,15 @@ function bootstrap_library_install() {
 function bootstrap_library_uninstall() {
   // Settings.
   variable_del('bootstrap_library_settings');
+}
+
+function bootstrap_library_update_7001() {
+  $settings = variable_get('bootstrap_library_settings');
+  if(!isset($settings['theme']['visibility'])) {
+    $settings['theme'] = array(
+      'visibility' => 1,
+      'themes' => '',
+    );
+    variable_set('bootstrap_library_settings', $settings);
+  }
 }
