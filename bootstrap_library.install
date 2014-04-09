@@ -10,6 +10,7 @@
  * Default settings storage.
  */
 function _bootstrap_library_defaults() {
+  $theme = variable_get('theme_default', NULL);;
   return array(
     'visibility' => array(
       'visibility' => 0,
@@ -17,7 +18,10 @@ function _bootstrap_library_defaults() {
     ),
     'theme' => array(
       'visibility' => 1,
-      'themes' => '',
+      'themes' => array($theme => $theme),
+    ),
+    'minimized' => array(
+      'options' => 1,
     ),
   );
 }
@@ -41,13 +45,25 @@ function bootstrap_library_uninstall() {
   variable_del('bootstrap_library_settings');
 }
 
-function bootstrap_library_update_7001() {
+/**
+ * Implementation of hook_update().
+ */
+function bootstrap_library_update_7002() {
+  $theme = variable_get('theme_default', NULL);
   $settings = variable_get('bootstrap_library_settings');
+  $update = FALSE;
   if(!isset($settings['theme']['visibility'])) {
     $settings['theme'] = array(
       'visibility' => 1,
-      'themes' => '',
+      'themes' => array($theme => $theme),
     );
-    variable_set('bootstrap_library_settings', $settings);
+    $update = TRUE;
   }
+  if(!isset($settings['minimized']['options'])) {
+    $settings['minimized'] = array(
+      'options' => 0,
+    );
+    $update = TRUE;
+  }
+  if ($update) variable_set('bootstrap_library_settings', $settings);
 }

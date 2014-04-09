@@ -32,8 +32,9 @@ function bootstrap_library_requirements($phase) {
       );
     }
     // Check if the site is running >= jQuery 1.7
+    $library = drupal_get_library('system', 'jquery');
     preg_match('/^(\d+)\.(\d+).*$/', $library['version'], $matches);
-    if (($library = drupal_get_library('system', 'jquery')) && floatval($matches[1] .'.'. $matches[2]) >= 1.7) {
+    if ( floatval($matches[1] .'.'. $matches[2]) >= 1.7) {
       $requirements['boostrap_library_jquery'] = array(
         'title' => t('Bootstrat version'),
         'value' => t('jQuery @version', array('@version' => $library['version'])),
@@ -121,10 +122,25 @@ function bootstrap_library_settings($form, &$form_state) {
       $active_themes[$theme->name] = $theme->info['name'];
     }
   }
+  $options['minimized'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Libraries Options'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $options['minimized']['options'] = array(
+    '#type' => 'radios',
+    '#title' => t('Activate on specific pages'),
+    '#options' => array(
+      0 => t('Use non minimized libraries (Development)'),
+      1 => t('Use minimized libraries (Production)'),
+    ),
+    '#default_value' => $settings['minimized']['options'],
+  );
   // Per-path visibility.
   $options['visibility'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Pages'),
+    '#title' => t('Pages Visibility'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
   );
@@ -146,7 +162,7 @@ function bootstrap_library_settings($form, &$form_state) {
   // Per-path visibility.
   $options['theme'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Themes'),
+    '#title' => t('Themes Visibility'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
   );
@@ -179,6 +195,8 @@ function bootstrap_library_settings($form, &$form_state) {
  * Implements hook_libraries_info().
  */
 function bootstrap_library_libraries_info() {
+  $settings = variable_get('bootstrap_library_settings');
+  $min = ($settings['minimized']['options']) ? '.min' : '';
   $libraries['bootstrap'] = array(
     'name' => 'Bootstrap',
     'vendor url' => 'http://getbootstrap.com/',
@@ -191,11 +209,11 @@ function bootstrap_library_libraries_info() {
     ),
     'files' => array(
       'js' => array(
-        'js/bootstrap.js',
+        'js/bootstrap' . $min . '.js',
       ),
       'css' => array(
-        'css/bootstrap.css',
-        'css/bootstrap-theme.css',
+        'css/bootstrap' . $min . '.css',
+        'css/bootstrap-theme' . $min . '.css',
       ),
     ),
   );
