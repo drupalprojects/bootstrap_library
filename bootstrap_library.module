@@ -25,7 +25,7 @@ function bootstrap_library_requirements($phase) {
     }
     else {
       $requirements['boostrap_library_library'] = array(
-        'title' => t('Bootstrat plugin'),
+        'title' => t('Bootstrap plugin'),
         'value' => t('Not installed'),
         'description' => $library['error message'],
         'severity' => REQUIREMENT_ERROR,
@@ -36,7 +36,7 @@ function bootstrap_library_requirements($phase) {
     preg_match('/^(\d+)\.(\d+).*$/', $library['version'], $matches);
     if ( floatval($matches[1] .'.'. $matches[2]) >= 1.7) {
       $requirements['boostrap_library_jquery'] = array(
-        'title' => t('Bootstrat version'),
+        'title' => t('Bootstrap version'),
         'value' => t('jQuery @version', array('@version' => $library['version'])),
         'severity' => REQUIREMENT_OK,
       );
