@@ -25,8 +25,8 @@ function _bootstrap_library_defaults() {
     ),
     'files' => array(
       'types' => array(
-        'css' => 1, 
-        'js' => 1,
+        'css' => 'css', 
+        'js' => 'js',
       ),
     ),
   );
@@ -84,8 +84,8 @@ function bootstrap_library_update_7003() {
   // Set file types if not set.
   if (!isset($settings['files']['types'])) {
     $settings['files']['types'] = array(
-      'css' => 1, 
-      'js' => 1,
+      'css' => 'css', 
+      'js' => 'js',
     );
     $update = TRUE;
   }

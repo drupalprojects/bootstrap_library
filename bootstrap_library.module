@@ -204,12 +204,12 @@ function bootstrap_library_settings($form, &$form_state) {
     '#type' => 'fieldset',
     '#title' => t('Files Settings'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#collapsed' => TRUE,
     '#group' => 'bootstrap'
   );
   $options['files']['types'] = array(
     '#type' => 'checkboxes',
-    '#title' => t('Select which files to load from the library'),
+    '#title' => t('Select which files to load from the library. By default you should check both, but in some cases you will need to load only CSS or JS Bootstrap files.'),
     '#options' => array(
       'css' => t('CSS files'),
       'js' => t('Javascript files'),
