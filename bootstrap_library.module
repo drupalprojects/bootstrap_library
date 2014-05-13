@@ -292,6 +292,8 @@ function _bootstrap_library_get_files($css = 1, $js = 1, $min = '') {
     'css/bootstrap' . $min . '.css',
     'css/bootstrap-theme' . $min . '.css',
   );
+  $variants = array();
+  $files = array();
   if ($css) {
     $variants['css'] = array( 'files' => array( 'css' => $css_array, ), );
     $files['css'] = $css_array;
