@@ -1,0 +1,12 @@
+visibility:
+  visibility: true
+  pages: 'admin/*'
+theme:
+  visibility: true
+  themes: ''
+minimized:
+  options: true
+files:
+  types:
+    js: true
+    css: true
