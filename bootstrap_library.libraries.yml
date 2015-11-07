@@ -1,0 +1,40 @@
+bootstrap:
+  remote: http://getbootstrap.com/
+  license:
+    name: MIT
+    gpl-compatible: false
+  js:
+    /libraries/bootstrap/js/bootstrap.min.js: { minified: true }
+  css:
+    theme:
+      /libraries/bootstrap/css/bootstrap.min.css: {}
+      /libraries/bootstrap/css/bootstrap-theme.min.css: {}
+  dependencies:
+    - core/jquery
+
+bootstrap-dev:
+  remote: http://getbootstrap.com/
+  license:
+    name: MIT
+    gpl-compatible: false
+  js:
+    /libraries/bootstrap/js/bootstrap.js: { }
+  css:
+    theme:
+      /libraries/bootstrap/css/bootstrap.css: {}
+      /libraries/bootstrap/css/bootstrap-theme.css: {}
+  dependencies:
+    - core/jquery
+
+bootstrap-cdn:
+  remote: http://getbootstrap.com/
+  license:
+    name: MIT
+    gpl-compatible: false
+  js:
+    //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js: { type: external, minified: true }
+  css:
+    theme:
+      //maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css: { type: external }
+  dependencies:
+    - core/jquery

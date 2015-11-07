@@ -19,7 +19,7 @@ use Drupal\Component\Utility\Unicode;
  */
 function bootstrap_library_requirements($phase) {
   $requirements = array();
-
+/*
   if ($phase == 'runtime') {
     $library = libraries_detect('bootstrap');
     $error_type = isset($library['error']) ? Unicode::ucfirst($library['error']) : '';
@@ -49,6 +49,6 @@ function bootstrap_library_requirements($phase) {
       );
     }
   }
-
+*/
   return $requirements;
 }
