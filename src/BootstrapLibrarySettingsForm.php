@@ -175,6 +175,10 @@ function _bootstrap_library_data() {
       "css": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css",
       "js": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"
     },
+    "3.3.6": {
+      "css": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
+      "js": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    },
     "3.3.5": {
       "css": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",
       "js": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"

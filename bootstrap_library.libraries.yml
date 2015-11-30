@@ -8,7 +8,6 @@ bootstrap:
   css:
     theme:
       /libraries/bootstrap/css/bootstrap.min.css: {}
-      /libraries/bootstrap/css/bootstrap-theme.min.css: {}
   dependencies:
     - core/jquery
 
@@ -22,6 +21,5 @@ bootstrap-dev:
   css:
     theme:
       /libraries/bootstrap/css/bootstrap.css: {}
-      /libraries/bootstrap/css/bootstrap-theme.css: {}
   dependencies:
     - core/jquery
