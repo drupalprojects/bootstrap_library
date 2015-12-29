@@ -1,0 +1,133 @@
+diff --git a/bootstrap_library.module b/bootstrap_library.module
+index 04dc8d8..67268fb 100644
+--- a/bootstrap_library.module
++++ b/bootstrap_library.module
+@@ -1,4 +1,3 @@
+-
+ <?php
+ 
+ /**
+@@ -7,22 +6,23 @@
+  */
+ 
+ use Drupal\Component\Utility\Unicode;
+-use Drupal\Core\Path\PathMatcher;
+ use Drupal\Core\Url;
+ 
+ define('BOOTSTRAP_MIN_PLUGIN_VERSION', '2.0.0');
+ 
+ /**
+  * Implements hook_page_attachments().
++ *
++ * Use Libraries API to load the js & css files into header.
+  */
+ function bootstrap_library_page_attachments(array &$page) {
+-  // Use Libraries API to load the js & css files into header
+-
++  // Don't add the JavaScript and CSS during installation.
+   if (drupal_installation_attempted()) {
+-    return; // Don't add the JavaScript and CSS during installation.
++    return;
+   }
++  // Don't add the JavaScript and CSS on specified paths or themes.
+   if (!_bootstrap_library_check_theme() || !_bootstrap_library_check_url()) {
+-    return; // Don't add the JavaScript and CSS on specified paths or themes.
++    return;
+   }
+   $config = \Drupal::config('bootstrap_library.settings');
+   $cdn = ($config->get('cdn.bootstrap'));
+@@ -50,15 +50,15 @@ function bootstrap_library_library_info_build() {
+   $cdn = ($config->get('cdn.bootstrap'));
+   if ($cdn) {
+     $data = ($config->get('cdn.options'));
+-    $cdn_options = json_decode( $data );
+-    $list = _bootstrap_library_object_to_array($cdn_options->bootstrap);  
++    $cdn_options = json_decode($data);
++    $list = _bootstrap_library_object_to_array($cdn_options->bootstrap);
+     $js_uri = $list[$cdn]['js'];
+     $css_uri = $list[$cdn]['css'];
+     $libraries['bootstrap-cdn'] = [
+-       'dependencies' => [
+-         'core/jquery',
+-       ],
+-     ];
++      'dependencies' => [
++        'core/jquery',
++      ],
++    ];
+     $libraries['bootstrap-cdn']['css']['base'][$css_uri] = [
+       'type' => 'external',
+     ];
+@@ -86,13 +86,12 @@ function _bootstrap_library_check_theme() {
+ /**
+  * Check if bootstrap_library should be active for the current URL.
+  *
+- * @return
++ * @return bool
+  *   TRUE if bootstrap_library should be active for the current page.
+  */
+ function _bootstrap_library_check_url() {
+   // Make it possible deactivate bootstrap with
+   // parameter ?bootstrap_library=no in the url.
+-
+   if (isset($_GET['bootstrap']) && $_GET['bootstrap'] == 'no') {
+     return FALSE;
+   }
+@@ -121,7 +120,7 @@ function _bootstrap_library_check_url() {
+ /**
+  * Converts a text with lines (\n) into an array of lines.
+  *
+- * @return
++ * @return array
+  *   Array with as many items as non-empty lines in the text
+  */
+ function _bootstrap_library_string_to_array($text) {
+@@ -132,7 +131,7 @@ function _bootstrap_library_string_to_array($text) {
+ /**
+  * Converts an array of lines into an text with lines (\n).
+  *
+- * @return
++ * @return string
+  *   Text with lines
+  */
+ function _bootstrap_library_array_to_string($array) {
+@@ -142,28 +141,24 @@ function _bootstrap_library_array_to_string($array) {
+ /**
+  * Converts an object to an array.
+  *
+- * @return
+- *   array
++ * @return array
++ *   Object converted.
+  */
+-
+-function _bootstrap_library_object_to_array($data)
+-{
+-    if (is_array($data) || is_object($data))
+-    {
+-        $result = array();
+-        foreach ($data as $key => $value)
+-        {
+-            $result[$key] = _bootstrap_library_object_to_array($value);
+-        }
+-        return $result;
++function _bootstrap_library_object_to_array($data) {
++  if (is_array($data) || is_object($data)) {
++    $result = array();
++    foreach ($data as $key => $value) {
++      $result[$key] = _bootstrap_library_object_to_array($value);
+     }
+-    return $data;
++    return $result;
++  }
++  return $data;
+ }
+ 
+ function _bootstrap_library_isSecure() {
+   if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) {
+     return 'https:';
+-  } 
++  }
+   else {
+     return 'http:';
+   }
