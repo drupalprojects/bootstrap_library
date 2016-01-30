@@ -1,0 +1,4 @@
+services:
+  bootstrap_library_scss.scssphp:
+    class: Leafo\ScssPhp\Compiler
+    arguments: []

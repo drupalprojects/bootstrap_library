@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Primarily Drupal hooks.
+ */
+
+use \Leafo\ScssPhp\Compiler;
+
+/**
+ * Compile SASS files.
+ *
+ * Use variables stored on bootstrap_library_settings.
+ *
+ * $files: file names with their route to add to compilation
+ */
+function _bootstrap_library_scss_compile($files = array("bootstrap.scss"), $importPath = '/libraries/bootstrap/scss/', $variables = FALSE, $filename = "bootstrap.css") {
+  if (!$variables) {
+    $config = \Drupal::config('bootstrap_library.settings');
+    $sass_variables = $config->get('sass.variables');
+  }
+  else {
+    $sass_variables = $variables;
+  }
+  $scss = new Compiler();
+  $scss->setImportPaths($importPath);
+  $scss->setVariables($sass_variables);
+  $compile_string = '';
+  foreach ($files as $file) {
+    $compile_string .= sprintf('@import "%s";', $file);
+  }
+  $data =  $scss->compile($compile_string . '.bg-faded { background-color: $gray-lightest; }');
+  $destination = "public://scss/" . $filename;
+  $result = file_save_data($data, $destination, FILE_EXISTS_REPLACE);
+  if ($result) {
+    drupal_set_message(t("File: @file was succesfully saved.", [@file => $destination]));
+  }
+  else {
+    drupal_set_message(t("File: @file was not saved.", [@file => $destination]), "error");
+  }
+}
