@@ -78,7 +78,7 @@ function _bootstrap_library_check_theme() {
   $theme = \Drupal::theme()->getActiveTheme()->getName();
   $valid_themes = $config->get('theme.themes');
   $visibility = $config->get('theme.visibility');
-  $theme_match = in_array($theme, $valid_themes);
+  $theme_match =  = !empty($valid_themes) && in_array($theme, $valid_themes);
   $theme_match = !($visibility xor $theme_match);
   return $theme_match;
 }

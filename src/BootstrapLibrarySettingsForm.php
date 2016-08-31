@@ -173,7 +173,7 @@ function _bootstrap_library_data() {
   "bootstrap": {
     "4.0.0-alpha.3": {
       "css": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css",
-      "js": "//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
+      "js": "//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js",
       "js": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"
     },
     "3.3.7": {
