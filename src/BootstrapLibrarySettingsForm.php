@@ -171,10 +171,10 @@ function _bootstrap_library_data() {
   return '{
   "timestamp": "2015-11-09T18:54:50.335Z",
   "bootstrap": {
-    "4.0.0-alpha.3": {
-      "css": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css",
-      "js": "//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js",
-      "js": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"
+    "4.0.0-alpha.5": {
+      "css": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css",
+      "js": "//cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js",
+      "js": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
     },
     "3.3.7": {
       "css": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
