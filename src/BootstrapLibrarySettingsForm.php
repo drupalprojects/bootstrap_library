@@ -66,17 +66,17 @@ class BootstrapLibrarySettingsForm extends ConfigFormBase {
 	// Production or minimized version
     $form['minimized'] = array(
       '#type' => 'fieldset',
-      '#title' => t('Production or development version'),
+      '#title' => t('Minimized, Non-minimized, or Composer version'),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
     );
     $form['minimized']['minimized_options'] = array(
       '#type' => 'radios',
-      '#title' => t('Choose minimized or non minimized version.'),
+      '#title' => t('Choose minimized, non-minimized, or composer version.'),
       '#options' => array(
         0 => t('Use non minimized libraries (Development)'),
         1 => t('Use minimized libraries (Production)'),
-      ),
+        2 => t('Use composer installed libraries'),      ),
       '#default_value' => $config->get('minimized.options'),
     );
     // Per-theme visibility.

@@ -30,13 +30,18 @@ function bootstrap_library_page_attachments(array &$page) {
     $page['#attached']['library'][] = 'bootstrap_library/bootstrap-cdn';
   }
   else {
-    $variant = ($config->get('minimized.options')) ? 'minified' : 'source';
-    // Add and initialise bootstrap.
-    if ($variant == 'minified') {
-      $page['#attached']['library'][] = 'bootstrap_library/bootstrap';
-    }
-    else {
-      $page['#attached']['library'][] = 'bootstrap_library/bootstrap-dev';
+    $variant_options = ['source', 'minified', 'composer'];
+    $variant = $variant_options[$config->get('minimized.options')];
+    switch ($variant) {
+      case 'minified':
+        $page['#attached']['library'][] = 'bootstrap_library/bootstrap';
+        break;
+      case 'source':
+        $page['#attached']['library'][] = 'bootstrap_library/bootstrap-dev';
+        break;
+      case 'composer':
+        $page['#attached']['library'][] = 'bootstrap_library/bootstrap-composer';
+        break;
     }
   }
 }
