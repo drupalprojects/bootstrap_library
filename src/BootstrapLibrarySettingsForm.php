@@ -171,10 +171,19 @@ function _bootstrap_library_data() {
   return '{
   "timestamp": "2015-11-09T18:54:50.335Z",
   "bootstrap": {
+    "4.1.1": {
+      "css": "//stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css",
+      "js": [
+        "//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
+        "//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      ]
+    },
     "4.0.0": {
       "css": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css",
-      "js": "//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
-      "js": "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      "js": [
+        "//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
+        "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      ]
     },
     "3.3.7": {
       "css": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
